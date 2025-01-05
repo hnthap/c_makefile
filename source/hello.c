@@ -1,4 +1,3 @@
-#include <stddef.h>
 #include "hello.h"
 
 size_t StringLength(const char *str, size_t maxlen) {

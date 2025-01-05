@@ -5,6 +5,8 @@
 #ifndef HELLOMAKEFILE_HELLO_H
 #define HELLOMAKEFILE_HELLO_H
 
+#include <stddef.h>
+
 /**
  * @brief A strnlen implementation.
  */
