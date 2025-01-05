@@ -39,7 +39,8 @@ WARNINGS = \
 	-Wcast-qual \
 	-Wcast-align=strict \
 	-Wcast-function-type \
-	-Wlogical-op
+	-Wlogical-op \
+	-Wno-long-long
 
 CFLAGS = \
 	-I$(IDIR) -std=$(STDC) $(WARNINGS)
@@ -48,6 +49,8 @@ APP = $(patsubst %,$(BDIR)/%,$(_APP))
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 OBJS = $(patsubst %,$(ODIR)/%,$(_OBJS))
 
+.PHONY: clean run
+
 $(ODIR)/%.o: $(SDIR)/%.c $(DEPS)
 	@$(CC) -c -o $@ $< $(CFLAGS)
 
@@ -55,9 +58,7 @@ $(APP): $(OBJS)
 	@$(CC) -o $@ $^ $(CFLAGS) $(LIBS)
 
 run: $(APP)
-	@./$(APP)
-
-all: run
+	@./$(APP) $(ARGS)
 
 $(OBJS): | $(ODIR)
 
@@ -68,8 +69,6 @@ $(APP): | $(BDIR)
 
 $(BDIR):
 	@mkdir -p $(BDIR)
-
-.PHONY: clean
 
 clean:
 	rm -f $(ODIR)/*.o $(BDIR)/* *~ $(SDIR)/*~ core $(IDIR)/*~

@@ -6,8 +6,8 @@
 #define HELLOMAKEFILE_HELLO_H
 
 /**
- * @brief Greet.
+ * @brief A strnlen implementation.
  */
-void Greet(void);
+size_t StringLength(const char *str, size_t maxlen);
 
 #endif  /* HELLOMAKEFILE_HELLO_H */

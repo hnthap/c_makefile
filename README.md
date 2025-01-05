@@ -11,9 +11,6 @@ make run
 
 # Clean
 make clean
-
-# Build and execute
-make all
 ```
 
 ## License
